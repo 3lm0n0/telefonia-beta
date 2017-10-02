@@ -65,6 +65,13 @@ Function f_TotalVencido(ByVal fila As String)
     End If
 End Function
 
+Function f_domicilioCliente(ByVal proveedor As String, ByVal fila As String, ByVal x As Integer, ByVal diccionario_numero_factura As Collection)
+    Dim functionName As String
+    functionName = "f_IVA_" & proveedor
+    functionName = Application.Run(functionName, fila, x, diccionario_numero_factura)
+    f_domicilioCliente = functionName
+End Function
+
 Function f_IVA(ByVal proveedor As String, ByVal fila As String, ByVal x As Integer, ByVal diccionario_numero_factura As Collection)
     Dim functionName As String
     functionName = "f_IVA_" & proveedor

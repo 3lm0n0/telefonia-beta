@@ -73,16 +73,21 @@ Public Function f_TotalVencido_edesur(ByVal fila As String)
     End If
 End Function
 
-Public Function f_IVA_edesur(ByVal fila As String, ByVal x As Integer, ByVal diccionario_numero_factura As Collection)
+Public Function f_domicilioCliente_edesur(ByVal fila As String, ByVal x As Integer, ByVal diccionario_numero_factura As Collection)
     Dim filaMonto As Double
     Dim fila_percent As Variant
     If Not IsEmpty(fila) Then
         If InStr(1, fila, "%") > 0 Then
-            fila_percent = Split(fila, "%")(0)
-            filaMonto = Split(fila, "%")(1)
+            f_IVA_edesur = CleanNonNumbers_Price2(Split(fila, "%")(0)) & "|" & CleanNonNumbers_Price2(Split(fila, "%")(1))
         End If
-        f_IVA_edesur = CleanNonNumbers_Price2(filaMonto)
-        f_IVA_edesur = CleanNonNumbers_Price2(fila_percent)
+    End If
+End Function
 
+
+Public Function f_IVA_edesur(ByVal fila As String, ByVal x As Integer, ByVal diccionario_numero_factura As Collection)
+    Dim filaMonto As Double
+    Dim fila_percent As Variant
+    If Not IsEmpty(fila) Then
+        If InStr(1, fila, diccionario_numero_factura(x), vbBinaryCompare) Then f_IVA_edesur = diccionario_numero_factura(x)
     End If
 End Function

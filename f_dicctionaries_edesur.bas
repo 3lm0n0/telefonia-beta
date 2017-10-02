@@ -88,9 +88,8 @@ Public Function diccionario_provincia_edesur(ByVal myArray As Collection)
 End Function
 
 Public Function diccionario_domicilio_edesur(ByVal myArray As Collection)
-    
-    myArray.Add LCase("")
-    
+    myArray.Add LCase("iguazú 341")
+    myArray.Add LCase("iguazu 341")
 End Function
 
 Public Function diccionario_IVA_edesur(ByVal myArray As Collection)
